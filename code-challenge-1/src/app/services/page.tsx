@@ -26,21 +26,6 @@ const services: Service[] = [
   }
 ];
 
-const testimonials = [
-  {
-    quote: 'Mushroom Motorsports offers top-tier kart designs. I’ve never raced better!',
-    customer: 'Mario'
-  },
-  {
-    quote: 'Their race tracks are exhilarating, and I love the power-up system!',
-    customer: 'Princess Peach'
-  },
-  {
-    quote: 'The custom karts are the best! A must-try for any racer.',
-    customer: 'Toad'
-  }
-];
-
 export default function Services() {
   return (
     <div>
