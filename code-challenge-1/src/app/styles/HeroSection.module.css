@@ -1,0 +1,11 @@
+.heroOverlay {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.textBGOverlay {
+    background-color: #D50032;
+}
+
+.textShadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
