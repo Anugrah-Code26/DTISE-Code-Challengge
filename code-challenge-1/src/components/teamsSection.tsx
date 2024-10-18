@@ -43,7 +43,7 @@ const TeamSection: React.FC = () => {
         <h2 className="text-3xl font-bold text-center mb-6 bg-[#D50032] w-fit py-2 px-10 rounded-full text-white">Meet The Team</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-8">
           {teams.map((member, index) => (
-            <div className="team-member text-center p-6 bg-gray-100 rounded-lg shadow-md">
+            <div key={index} className="team-member text-center p-6 bg-gray-100 rounded-lg shadow-md">
               <Image
                 src={member.picture}
                 alt={member.alt}
