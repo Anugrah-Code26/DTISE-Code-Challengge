@@ -1,7 +1,7 @@
 "use client";
 
 import Image, { StaticImageData } from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, memo } from 'react';
 import ProductServicesBG from '../public/images/product-services.webp';
 import Mario from "../public/images/mario.webp";
 import Luigi from "../public/images/luigi.webp";
@@ -66,6 +66,22 @@ const additionalTeams: NewTeam[] = [
   }
 ];
 
+const TeamMember: React.FC<Team> = memo(({ picture, alt, name, position, experience }) => (
+  <div className="team-member text-center p-6 bg-gray-100 rounded-lg shadow-md">
+    <Image
+      src={typeof picture === "string" ? picture : picture.src}
+      alt={alt}
+      width={100}
+      height={100}
+      className="rounded-full mx-auto"
+      loading="lazy"
+    />
+    <h3 className="text-2xl font-semibold mt-4">{name}</h3>
+    <p className="text-sm font-light mt-2">{position}</p>
+    <p className="mt-4">{experience}</p>
+  </div>
+));
+
 const TeamSection: React.FC = () => {
   const [teams, setTeams] = useState<Team[]>(initialTeams);
 
@@ -78,21 +94,21 @@ const TeamSection: React.FC = () => {
 
         const newMembers = additionalTeams.map((member, index) => {
           const randomUser = randomUsers[index];
-          return {
-            picture: member.picture,
-            alt: `${randomUser.name.first} ${randomUser.name.last} - ${member.position}`,
-            name: `${randomUser.name.first} ${randomUser.name.last}`,
-            position: member.position,
-            experience: member.experience
-          };
-        });
+          if (randomUser) {
+            return {
+              picture: member.picture,
+              alt: `${randomUser.name.first} ${randomUser.name.last} - ${member.position}`,
+              name: `${randomUser.name.first} ${randomUser.name.last}`,
+              position: member.position,
+              experience: member.experience
+            };
+          }
+          return null;
+        }).filter(Boolean) as Team[];
 
         setTeams((prevTeams) => {
-          if (prevTeams.length < 6) {
-            const combinedTeams = [...prevTeams, ...newMembers];
-            return combinedTeams.slice(0, 6);
-          }
-          return prevTeams;
+          const combinedTeams = [...prevTeams, ...newMembers];
+          return combinedTeams.slice(0, 6);
         });
       } catch (error) {
         console.error("Error fetching random users:", error);
@@ -107,18 +123,7 @@ const TeamSection: React.FC = () => {
       <h2 className="text-3xl font-bold text-center mb-6 bg-[#D50032] w-fit py-2 px-10 rounded-full text-white">Meet The Team</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-8">
         {teams.map((member, index) => (
-          <div key={index} className="team-member text-center p-6 bg-gray-100 rounded-lg shadow-md">
-            <Image
-              src={typeof member.picture === "string" ? member.picture : member.picture.src}
-              alt={member.alt}
-              width={100}
-              height={100}
-              className="rounded-full mx-auto"
-            />
-            <h3 className="text-2xl font-semibold mt-4">{member.name}</h3>
-            <p className="text-sm font-light mt-2">{member.position}</p>
-            <p className="mt-4">{member.experience}</p>
-          </div>
+          <TeamMember key={index} {...member} />
         ))}
       </div>
     </section>
