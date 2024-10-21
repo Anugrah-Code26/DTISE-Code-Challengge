@@ -1,6 +1,7 @@
+import React from "react";
 import DarkBG from "../public/images/black-bg.jpg";
 
-const TestimonialsSection = () => {
+const TestimonialsSection: React.FC = () => {
   return (
     <section className="testimonials py-16" style={{ backgroundImage: `url(${DarkBG.src})` }}>
       <div className="container mx-auto">

@@ -1,7 +1,8 @@
 import BGHero from '../public/images/bg-hero.jpg';
 import styles from '../app/styles/HeroSection.module.css';
+import React from 'react';
 
-const HeroSection = () => {
+const HeroSection: React.FC = () => {
   return (
     <section className="relative hero bg-cover bg-center h-screen" style={{ backgroundImage: `url(${BGHero.src})` }}>
       <div className={`absolute inset-0 ${styles.heroOverlay}`} />

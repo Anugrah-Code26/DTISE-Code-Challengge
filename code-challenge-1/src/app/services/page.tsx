@@ -1,6 +1,7 @@
 import TestimonialsSection from '../../components/testimonialsSection';
 import ProductServicesBG from '../../public/images/product-services.jpg';
 import BGHero from "../../public/images/black-hero.png";
+import React from 'react';
 
 interface Service {
   name: string;
@@ -26,7 +27,7 @@ const services: Service[] = [
   }
 ];
 
-export default function Services() {
+const Services: React.FC = () => {
   return (
     <div>
       {/* Hero Section */}
@@ -60,3 +61,5 @@ export default function Services() {
     </div>
   );
 }
+
+export default Services;

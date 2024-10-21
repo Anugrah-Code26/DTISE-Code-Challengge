@@ -1,24 +1,30 @@
 import ProductServicesBG from '../public/images/product-services.jpg';
 
-const ServicesSection = () => {
-  const services = [
-    {
-      service: "Custom Karts",
-      detail: "Fully-customizable karts to match your racing style. Choose from various models, personalize everything, and dominate the track.",
-      button: "Design Your Kart Now!"
-    },
-    {
-      service: "Kart Racing Experiences",
-      detail: "Join our thrilling race tracks with power-ups and surprises! Perfect for beginners and pros alike.",
-      button: "Book Your Race Experience!"
-    },
-    {
-      service: "Kart Maintenance & Upgrades",
-      detail: "Keep your kart in top shape with premium maintenance, or upgrade your kart with turbo boosts and custom engines.",
-      button: "Upgrade Your Kart!"
-    }  
-  ]
+interface Service {
+    service: string;
+    detail: string;
+    button: string;
+  }
 
+const services: Service[] = [
+  {
+    service: "Custom Karts",
+    detail: "Fully-customizable karts to match your racing style. Choose from various models, personalize everything, and dominate the track.",
+    button: "Design Your Kart Now!"
+  },
+  {
+    service: "Kart Racing Experiences",
+    detail: "Join our thrilling race tracks with power-ups and surprises! Perfect for beginners and pros alike.",
+    button: "Book Your Race Experience!"
+  },
+  {
+    service: "Kart Maintenance & Upgrades",
+    detail: "Keep your kart in top shape with premium maintenance, or upgrade your kart with turbo boosts and custom engines.",
+    button: "Upgrade Your Kart!"
+  }  
+]
+
+const ServicesSection: React.FC = () => {
   return (
     <section className="services py-16 bg-gray-100" style={{ backgroundImage: `url(${ProductServicesBG.src})` }}>
       <div className="flex flex-col mx-auto items-center justify-center">
