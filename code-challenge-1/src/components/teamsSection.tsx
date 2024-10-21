@@ -2,15 +2,13 @@
 
 import Image, { StaticImageData } from 'next/image';
 import React, { useEffect, useState } from 'react';
-import ProductServicesBG from '../public/images/product-services.jpg';
-import Peach from "../public/images/peach.png";
-import Mario from "../public/images/mario.png";
-import Luigi from "../public/images/luigi.png";
-import Toadette from "../public/images/toadette.png";
-import Mii1 from "../public/images/mii1.jpg";
-import Mii2 from "../public/images/mii2.jpeg";
-import Mii3 from "../public/images/mii3.jpeg";
-import Mii4 from "../public/images/mii4.jpeg";
+import ProductServicesBG from '../public/images/product-services.webp';
+import Mario from "../public/images/mario.webp";
+import Luigi from "../public/images/luigi.webp";
+import Toadette from "../public/images/toadette.webp";
+import Mii1 from "../public/images/mii1.webp";
+import Mii2 from "../public/images/mii2.webp";
+import Mii3 from "../public/images/mii3.webp";
 
 interface Team {
   picture: StaticImageData | string;
@@ -27,13 +25,6 @@ interface NewTeam {
 }
 
 const initialTeams: Team[] = [
-  {
-    picture: Peach,
-    alt: "Peach - CEO",
-    name: "Peach",
-    position: "Lead Engineer",
-    experience: "Founder of Mushroom Motosports."
-  },
   {
     picture: Mario,
     alt: "Mario - Lead Engineer",
@@ -72,11 +63,6 @@ const additionalTeams: NewTeam[] = [
     picture: Mii3,
     position: "Staff Designer",
     experience: "One of the latest additions to Mushroom Motorsports design team."
-  },
-  {
-    picture: Mii4,
-    position: "Staff Designer",
-    experience: "One of the latest additions to Mushroom Motorsports design team."
   }
 ];
 
@@ -102,9 +88,9 @@ const TeamSection: React.FC = () => {
         });
 
         setTeams((prevTeams) => {
-          if (prevTeams.length < 8) {
+          if (prevTeams.length < 6) {
             const combinedTeams = [...prevTeams, ...newMembers];
-            return combinedTeams.slice(0, 8);
+            return combinedTeams.slice(0, 6);
           }
           return prevTeams;
         });
@@ -119,7 +105,7 @@ const TeamSection: React.FC = () => {
   return (
     <section className="py-12 flex flex-col mx-auto items-center justify-center text-gray-900" style={{ backgroundImage: `url(${ProductServicesBG.src})` }}>
       <h2 className="text-3xl font-bold text-center mb-6 bg-[#D50032] w-fit py-2 px-10 rounded-full text-white">Meet The Team</h2>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 px-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-8">
         {teams.map((member, index) => (
           <div key={index} className="team-member text-center p-6 bg-gray-100 rounded-lg shadow-md">
             <Image

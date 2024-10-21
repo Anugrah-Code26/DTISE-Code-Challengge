@@ -1,4 +1,4 @@
-import BGHero from '../public/images/bg-hero.jpg';
+import BGHero from '../public/images/bg-hero.webp';
 import styles from '../app/styles/HeroSection.module.css';
 import React from 'react';
 

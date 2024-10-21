@@ -1,6 +1,6 @@
 import TestimonialsSection from '../../components/testimonialsSection';
-import ProductServicesBG from '../../public/images/product-services.jpg';
-import BGHero from "../../public/images/black-hero.png";
+import ProductServicesBG from '../../public/images/product-services.webp';
+import BGHero from "../../public/images/black-hero.webp";
 import React from 'react';
 
 interface Service {

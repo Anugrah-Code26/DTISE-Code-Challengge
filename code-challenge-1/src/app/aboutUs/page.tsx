@@ -1,7 +1,7 @@
 import Culture from '@/components/cultureSection';
 import HistoryTimeline from '@/components/historyTimeline';
 import React from 'react';
-import BGHero from "../../public/images/black-hero.png";
+import BGHero from "../../public/images/black-hero.webp";
 import TeamSection from '@/components/teamsSection';
 
 const AboutUs: React.FC = () => {

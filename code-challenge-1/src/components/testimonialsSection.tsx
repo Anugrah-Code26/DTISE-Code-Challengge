@@ -1,5 +1,5 @@
 import React from "react";
-import DarkBG from "../public/images/black-bg.jpg";
+import DarkBG from "../public/images/black-bg.webp";
 
 const TestimonialsSection: React.FC = () => {
   return (
