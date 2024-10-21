@@ -1,15 +1,25 @@
+import React from 'react';
+import Image from 'next/image';
 import BGHero from '../public/images/bg-hero.webp';
 import styles from '../app/styles/HeroSection.module.css';
-import React from 'react';
 
-const HeroSection: React.FC = () => {
+const HeroSection: React.FC = React.memo(() => {
   return (
-    <section className="relative hero bg-cover bg-center h-screen" style={{ backgroundImage: `url(${BGHero.src})` }}>
+    <section className={`relative hero bg-cover bg-center h-screen`}>
       <div className={`absolute inset-0 ${styles.heroOverlay}`} />
+      <Image
+        src={BGHero}
+        alt="Hero Background"
+        layout="fill"
+        objectFit="cover"
+        quality={75}
+        placeholder="blur"
+        priority
+      />
       <div className="container mx-auto h-full flex justify-center items-center relative z-10">
         <div className="text-center text-white">
           <h1 className={`text-5xl font-bold ${styles.textShadow}`}>Race Beyond Limits with Mushroom Motorsports!</h1>
-          <p className={`mt-4 text-lg max-w-lg mx-auto  ${styles.textShadow}`}>
+          <p className={`mt-4 text-lg max-w-lg mx-auto ${styles.textShadow}`}>
             Driving innovation and adventure, one custom kart at a time. Experience the thrill of world-class kart racing with precision engineering and cutting-edge design.
           </p>
           <button className="mt-8 px-6 py-3 bg-yellow-500 rounded text-black font-semibold hover:bg-yellow-600 transition duration-300">
@@ -22,6 +32,6 @@ const HeroSection: React.FC = () => {
       </div>
     </section>
   );
-};
+});
 
 export default HeroSection;

@@ -2,16 +2,18 @@ import Image from 'next/image';
 import CompanyOverviewImg from '../public/images/company-overview.webp';
 import React from 'react';
 
-const CompanyOverview: React.FC = () => {
+const CompanyOverview: React.FC = React.memo(() => {
   return (
     <section className="company-overview">
-      <div className='flex mx-auto'>
+      <div className="flex mx-auto">
         <div className="flex-1 items-center justify-center bg-white py-16 hidden md:flex">
           <Image
             src={CompanyOverviewImg}
             alt="Company Overview"
             width={360}
             height={38}
+            layout="responsive"
+            placeholder="blur"
           />
         </div>
         <div className="flex-1 bg-[#D50032] py-16 flex items-center">
@@ -29,6 +31,6 @@ const CompanyOverview: React.FC = () => {
       </div>
     </section>
   );
-};
+});
 
 export default CompanyOverview;

@@ -1,12 +1,21 @@
+import React from 'react';
+import Image from 'next/image';
 import TeamSection from '@/components/teamsSection';
 import BGHero from "../../public/images/black-hero.webp";
-import React from 'react';
 
 const Team: React.FC = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative hero bg-cover bg-center h-screen" style={{ backgroundImage: `url(${BGHero.src})` }}>
+      <section className="relative hero h-screen">
+        <Image
+          src={BGHero}
+          alt="Team Background"
+          layout="fill"
+          objectFit="cover"
+          quality={75}
+          priority
+        />
         <div className="container mx-auto h-full flex justify-center items-center relative z-10">
           <div className="text-center text-white">
             <h1 className="text-5xl font-bold">Meet the Team</h1>
@@ -19,6 +28,6 @@ const Team: React.FC = () => {
       <TeamSection />
     </div>
   );
-}
+};
 
-export default Team
+export default React.memo(Team);
