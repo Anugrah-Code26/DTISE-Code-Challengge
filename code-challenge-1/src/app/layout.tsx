@@ -6,6 +6,7 @@ import "./globals.css";
 import Link from 'next/link';
 import Logo from "../public/images/logo.png";
 import Image from "next/image";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -40,19 +41,9 @@ export default function RootLayout({
               height={50}
             />
             <div className="md:hidden">
-              <button onClick={toggleMenu} className="text-white focus:outline-none">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-              </button>
+              <RxHamburgerMenu onClick={toggleMenu} />
             </div>
-            <nav className={`flex md:flex md:items-center ${isOpen ? 'block' : 'hidden'} md:block`}>
+            <nav className={`hidden md:flex md:items-center`}>
               <Link href="/" className="mr-6">Home</Link>
               <Link href="/aboutUs" className="mr-6">About Us</Link>
               <Link href="/services" className="mr-6">Services</Link>
