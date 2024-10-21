@@ -66,21 +66,25 @@ const additionalTeams: NewTeam[] = [
   }
 ];
 
-const TeamMember: React.FC<Team> = memo(({ picture, alt, name, position, experience }) => (
-  <div className="team-member text-center p-6 bg-gray-100 rounded-lg shadow-md">
-    <Image
-      src={typeof picture === "string" ? picture : picture.src}
-      alt={alt}
-      width={100}
-      height={100}
-      className="rounded-full mx-auto"
-      loading="lazy"
-    />
-    <h3 className="text-2xl font-semibold mt-4">{name}</h3>
-    <p className="text-sm font-light mt-2">{position}</p>
-    <p className="mt-4">{experience}</p>
-  </div>
-));
+const TeamMember: React.FC<Team> = memo(({ picture, alt, name, position, experience }) => {
+  return (
+    <div className="team-member text-center p-6 bg-gray-100 rounded-lg shadow-md">
+      <Image
+        src={typeof picture === "string" ? picture : picture.src}
+        alt={alt}
+        width={100}
+        height={100}
+        className="rounded-full mx-auto"
+        loading="lazy"
+      />
+      <h3 className="text-2xl font-semibold mt-4">{name}</h3>
+      <p className="text-sm font-light mt-2">{position}</p>
+      <p className="mt-4">{experience}</p>
+    </div>
+  );
+});
+
+TeamMember.displayName = "TeamMember";
 
 const TeamSection: React.FC = () => {
   const [teams, setTeams] = useState<Team[]>(initialTeams);
@@ -88,7 +92,7 @@ const TeamSection: React.FC = () => {
   useEffect(() => {
     const fetchRandomUsers = async () => {
       try {
-        const response = await fetch('https://randomuser.me/api/?results=4');
+        const response = await fetch('https://randomuser.me/api/?results=3');
         const data = await response.json();
         const randomUsers = data.results;
 
@@ -129,5 +133,7 @@ const TeamSection: React.FC = () => {
     </section>
   );
 };
+
+TeamSection.displayName = "TeamSection";
 
 export default TeamSection;
