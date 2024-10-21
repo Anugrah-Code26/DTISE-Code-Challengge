@@ -96,8 +96,8 @@ const TeamSection: React.FC = memo(() => {
       const data = await response.json();
       const randomUsers = data.results;
 
-      const newMembers = additionalTeams.map((member, index) => {
-        const randomUser = randomUsers[index];
+      const newMembers = additionalTeams.map((member) => {
+        const randomUser = randomUsers[additionalTeams.indexOf(member)];
         if (randomUser) {
           return {
             picture: member.picture,
@@ -132,7 +132,7 @@ const TeamSection: React.FC = memo(() => {
         <p>Loading team members...</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-8">
-          {teams.map((member, index) => (
+          {teams.map((member) => (
             <TeamMember key={`${member.name}-${member.position}`} {...member} />
           ))}
         </div>

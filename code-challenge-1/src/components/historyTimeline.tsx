@@ -45,7 +45,7 @@ const events: Event[] = [
   },
 ];
 
-const HistoryTimeline: React.FC = React.memo(() => {
+const HistoryTimeline: React.FC = () => {
   return (
     <div className="flex justify-center bg-gray-100">
       <div className="mx-auto px-4 py-10 bg-white shadow-md rounded-lg">
@@ -59,6 +59,9 @@ const HistoryTimeline: React.FC = React.memo(() => {
       </div>
     </div>
   );
-});
+};
 
-export default HistoryTimeline;
+const MemoizedHistoryTimeline = React.memo(HistoryTimeline);
+MemoizedHistoryTimeline.displayName = "HistoryTimeline";
+
+export default MemoizedHistoryTimeline;

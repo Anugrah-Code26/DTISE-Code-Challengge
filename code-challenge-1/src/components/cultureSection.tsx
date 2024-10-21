@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import BackGround from '../public/images/culture-bg.webp';
 
-const Culture: React.FC = React.memo(() => {
+const Culture: React.FC = () => {
   return (
     <section className="py-12 text-gray-900 relative overflow-hidden">
       <div className="absolute inset-0">
@@ -26,6 +26,9 @@ const Culture: React.FC = React.memo(() => {
       </div>
     </section>
   );
-});
+};
 
-export default Culture;
+const MemoizedCulture = React.memo(Culture);
+MemoizedCulture.displayName = "Culture";
+
+export default MemoizedCulture;
