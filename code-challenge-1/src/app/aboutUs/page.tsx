@@ -1,13 +1,22 @@
+import React, { memo } from 'react';
+import Image from 'next/image';
 import Culture from '@/components/cultureSection';
 import HistoryTimeline from '@/components/historyTimeline';
-import React from 'react';
 import BGHero from "../../public/images/black-hero.webp";
 import TeamSection from '@/components/teamsSection';
 
 const AboutUs: React.FC = () => {
   return (
     <div>
-      <section className="relative hero bg-cover bg-center h-screen" style={{ backgroundImage: `url(${BGHero.src})` }}>
+      <section className="relative hero h-screen">
+        <Image
+          src={BGHero}
+          alt="Hero Background"
+          layout="fill"
+          objectFit="cover"
+          quality={75}
+          priority
+        />
         <div className="container mx-auto h-full flex justify-center items-center relative z-10">
           <div className="text-center text-white">
             <h1 className="text-5xl font-bold">Mushroom Motorsports Company History</h1>
@@ -24,4 +33,4 @@ const AboutUs: React.FC = () => {
   );
 };
 
-export default AboutUs;
+export default memo(AboutUs);

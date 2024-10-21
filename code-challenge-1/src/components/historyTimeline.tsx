@@ -45,20 +45,20 @@ const events: Event[] = [
   },
 ];
 
-const HistoryTimeline: React.FC = () => {
+const HistoryTimeline: React.FC = React.memo(() => {
   return (
     <div className="flex justify-center bg-gray-100">
       <div className="mx-auto px-4 py-10 bg-white shadow-md rounded-lg">
         <h1 className="text-2xl font-bold mb-6 text-gray-900 text-center">Mushroom Motorsports Company History</h1>
-        {events.map((event, index) => (
-          <div key={index} className="border-l-4 border-[#D50032] pl-4 mb-6">
-            <h3 className="text-xl font-semibold text-gray-800">{event.year} - {event.title}</h3>
-            <p className="text-gray-600">{event.description}</p>
+        {events.map(({ year, title, description }) => (
+          <div key={year} className="border-l-4 border-[#D50032] pl-4 mb-6">
+            <h3 className="text-xl font-semibold text-gray-800">{year} - {title}</h3>
+            <p className="text-gray-600">{description}</p>
           </div>
         ))}
       </div>
     </div>
   );
-};
+});
 
 export default HistoryTimeline;

@@ -1,7 +1,7 @@
 "use client";
 
 import Image, { StaticImageData } from 'next/image';
-import React, { useEffect, useState, memo } from 'react';
+import React, { useEffect, useState, memo, useCallback } from 'react';
 import ProductServicesBG from '../public/images/product-services.webp';
 import Mario from "../public/images/mario.webp";
 import Luigi from "../public/images/luigi.webp";
@@ -86,53 +86,60 @@ const TeamMember: React.FC<Team> = memo(({ picture, alt, name, position, experie
 
 TeamMember.displayName = "TeamMember";
 
-const TeamSection: React.FC = () => {
+const TeamSection: React.FC = memo(() => {
   const [teams, setTeams] = useState<Team[]>(initialTeams);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const fetchRandomUsers = useCallback(async () => {
+    try {
+      const response = await fetch('https://randomuser.me/api/?results=3');
+      const data = await response.json();
+      const randomUsers = data.results;
+
+      const newMembers = additionalTeams.map((member, index) => {
+        const randomUser = randomUsers[index];
+        if (randomUser) {
+          return {
+            picture: member.picture,
+            alt: `${randomUser.name.first} ${randomUser.name.last} - ${member.position}`,
+            name: `${randomUser.name.first} ${randomUser.name.last}`,
+            position: member.position,
+            experience: member.experience
+          };
+        }
+        return null;
+      }).filter(Boolean) as Team[];
+
+      setTeams((prevTeams) => {
+        const combinedTeams = [...prevTeams, ...newMembers];
+        return combinedTeams.slice(0, 6);
+      });
+    } catch (error) {
+      console.error("Error fetching random users:", error);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
-    const fetchRandomUsers = async () => {
-      try {
-        const response = await fetch('https://randomuser.me/api/?results=3');
-        const data = await response.json();
-        const randomUsers = data.results;
-
-        const newMembers = additionalTeams.map((member, index) => {
-          const randomUser = randomUsers[index];
-          if (randomUser) {
-            return {
-              picture: member.picture,
-              alt: `${randomUser.name.first} ${randomUser.name.last} - ${member.position}`,
-              name: `${randomUser.name.first} ${randomUser.name.last}`,
-              position: member.position,
-              experience: member.experience
-            };
-          }
-          return null;
-        }).filter(Boolean) as Team[];
-
-        setTeams((prevTeams) => {
-          const combinedTeams = [...prevTeams, ...newMembers];
-          return combinedTeams.slice(0, 6);
-        });
-      } catch (error) {
-        console.error("Error fetching random users:", error);
-      }
-    };
-
     fetchRandomUsers();
-  }, []);
+  }, [fetchRandomUsers]);
 
   return (
     <section className="py-12 flex flex-col mx-auto items-center justify-center text-gray-900" style={{ backgroundImage: `url(${ProductServicesBG.src})` }}>
       <h2 className="text-3xl font-bold text-center mb-6 bg-[#D50032] w-fit py-2 px-10 rounded-full text-white">Meet The Team</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-8">
-        {teams.map((member, index) => (
-          <TeamMember key={index} {...member} />
-        ))}
-      </div>
+      {loading ? (
+        <p>Loading team members...</p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-8">
+          {teams.map((member, index) => (
+            <TeamMember key={`${member.name}-${member.position}`} {...member} />
+          ))}
+        </div>
+      )}
     </section>
   );
-};
+});
 
 TeamSection.displayName = "TeamSection";
 

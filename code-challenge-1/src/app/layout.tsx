@@ -1,12 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import localFont from "next/font/local";
 import "./globals.css";
 import Link from 'next/link';
 import Logo from "../public/images/logo.webp";
 import Image from "next/image";
-import { RxHamburgerMenu } from "react-icons/rx";
+import dynamic from 'next/dynamic';
+
+const RxHamburgerMenu = dynamic(() => import("react-icons/rx").then(mod => mod.RxHamburgerMenu));
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,9 +28,9 @@ export default function RootLayout({
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleMenu = useCallback(() => {
+    setIsOpen((prev) => !prev);
+  }, []);
 
   return (
     <html lang="en">
@@ -39,6 +41,8 @@ export default function RootLayout({
               src={Logo}
               alt="Logo"
               height={50}
+              width={100}
+              priority
             />
             <div className="md:hidden">
               <RxHamburgerMenu onClick={toggleMenu} />
@@ -61,7 +65,7 @@ export default function RootLayout({
         </header>
         <main>{children}</main>
         <footer className="bg-black text-white text-center p-4">
-          <p>© 2024 Mushroom Motorsports!. All rights reserved.</p>
+          <p>© 2024 Mushroom Motorsports! All rights reserved.</p>
         </footer>
       </body>
     </html>
