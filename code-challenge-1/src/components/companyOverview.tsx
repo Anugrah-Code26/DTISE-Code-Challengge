@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import CompanyOverviewImg from '../public/images/company-overview.png';
+import React from 'react';
 
-const CompanyOverview = () => {
+const CompanyOverview: React.FC = () => {
   return (
     <section className="company-overview">
       <div className='flex mx-auto'>

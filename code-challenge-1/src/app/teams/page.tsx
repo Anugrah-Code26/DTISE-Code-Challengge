@@ -1,7 +1,8 @@
 import TeamSection from '@/components/teamsSection';
 import BGHero from "../../public/images/black-hero.png";
+import React from 'react';
 
-export default function Team() {
+const Team: React.FC = () => {
   return (
     <div>
       {/* Hero Section */}
@@ -19,3 +20,5 @@ export default function Team() {
     </div>
   );
 }
+
+export default Team

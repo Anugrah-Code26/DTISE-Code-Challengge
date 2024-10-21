@@ -13,29 +13,29 @@ interface Team {
     experience: string
   }
 
-  const teams: Team[] = [
-    {
-      picture: Mario,
-      alt: "Mario - Lead Engineer",
-      name: "Mario",
-      position: "Lead Engineer",
-      experience: "Mario leads the team with years of racing experience. Known for his quick reflexes and engineering genius, he's the heart of Mushroom Motorsports."
-    },
-    {
-      picture: Luigi,
-      alt: "Luigi - Track Designer",
-      name: "Luigi",
-      position: "Track Designer",
-      experience: "Luigi designs the most thrilling tracks, known for his attention to detail and love for challenging race courses."
-    },
-    {
-      picture: Toadette,
-      alt: "Toadette - Head of Design",
-      name: "Toadette",
-      position: "Head of Design",
-      experience: "Toadette leads the design team, crafting karts that are not only fast but also a work of art. Her eye for aesthetics is unmatched."
-    }
-  ];
+const teams: Team[] = [
+  {
+    picture: Mario,
+    alt: "Mario - Lead Engineer",
+    name: "Mario",
+    position: "Lead Engineer",
+    experience: "Mario leads the team with years of racing experience. Known for his quick reflexes and engineering genius, he's the heart of Mushroom Motorsports."
+  },
+  {
+    picture: Luigi,
+    alt: "Luigi - Track Designer",
+    name: "Luigi",
+    position: "Track Designer",
+    experience: "Luigi designs the most thrilling tracks, known for his attention to detail and love for challenging race courses."
+  },
+  {
+    picture: Toadette,
+    alt: "Toadette - Head of Design",
+    name: "Toadette",
+    position: "Head of Design",
+    experience: "Toadette leads the design team, crafting karts that are not only fast but also a work of art. Her eye for aesthetics is unmatched."
+  }
+];
 
 const TeamSection: React.FC = () => {
   return (
