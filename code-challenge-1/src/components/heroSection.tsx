@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import BGHero from '../public/images/bg-hero.webp';
 import styles from '../app/styles/HeroSection.module.css';
 
