@@ -2,7 +2,7 @@ import Image from 'next/image';
 import CompanyOverviewImg from '../public/images/company-overview.webp';
 import React from 'react';
 
-const CompanyOverview: React.FC = React.memo(() => {
+const CompanyOverview: React.FC = () => {
   return (
     <section className="company-overview">
       <div className="flex mx-auto">
@@ -31,6 +31,9 @@ const CompanyOverview: React.FC = React.memo(() => {
       </div>
     </section>
   );
-});
+};
 
-export default CompanyOverview;
+const MemoizedCompanyOverview = React.memo(CompanyOverview);
+MemoizedCompanyOverview.displayName = "CompanyOverview";
+
+export default MemoizedCompanyOverview;

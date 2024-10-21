@@ -26,7 +26,7 @@ const services: Service[] = [
   }  
 ];
 
-const ServicesSection: React.FC = React.memo(() => {
+const ServicesSection: React.FC = () => {
   return (
     <section className="services py-16 bg-gray-100 relative">
       <div className="absolute inset-0">
@@ -54,6 +54,9 @@ const ServicesSection: React.FC = React.memo(() => {
       </div>
     </section>
   );
-});
+};
 
-export default ServicesSection;
+const MemoizedServicesSection = React.memo(ServicesSection);
+MemoizedServicesSection.displayName = "ServicesSection";
+
+export default MemoizedServicesSection;

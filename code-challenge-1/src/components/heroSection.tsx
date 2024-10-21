@@ -3,7 +3,7 @@ import Image from 'next/image';
 import BGHero from '../public/images/bg-hero.webp';
 import styles from '../app/styles/HeroSection.module.css';
 
-const HeroSection: React.FC = React.memo(() => {
+const HeroSection: React.FC = () => {
   return (
     <section className={`relative hero bg-cover bg-center h-screen`}>
       <div className={`absolute inset-0 ${styles.heroOverlay}`} />
@@ -32,6 +32,9 @@ const HeroSection: React.FC = React.memo(() => {
       </div>
     </section>
   );
-});
+};
 
-export default HeroSection;
+const MemoizedHeroSection = React.memo(HeroSection);
+MemoizedHeroSection.displayName = "HeroSection";
+
+export default MemoizedHeroSection;
