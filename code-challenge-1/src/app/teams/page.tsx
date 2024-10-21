@@ -1,5 +1,5 @@
 import TeamSection from '@/components/teamsSection';
-import BGHero from "../../public/images/black-hero.png";
+import BGHero from "../../public/images/black-hero.webp";
 import React from 'react';
 
 const Team: React.FC = () => {

@@ -4,7 +4,7 @@ import { useState } from "react";
 import localFont from "next/font/local";
 import "./globals.css";
 import Link from 'next/link';
-import Logo from "../public/images/logo.png";
+import Logo from "../public/images/logo.webp";
 import Image from "next/image";
 import { RxHamburgerMenu } from "react-icons/rx";
 

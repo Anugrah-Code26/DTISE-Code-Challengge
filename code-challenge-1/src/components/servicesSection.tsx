@@ -1,4 +1,4 @@
-import ProductServicesBG from '../public/images/product-services.jpg';
+import ProductServicesBG from '../public/images/product-services.webp';
 
 interface Service {
     service: string;

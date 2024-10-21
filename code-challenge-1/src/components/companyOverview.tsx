@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import CompanyOverviewImg from '../public/images/company-overview.png';
+import CompanyOverviewImg from '../public/images/company-overview.webp';
 import React from 'react';
 
 const CompanyOverview: React.FC = () => {

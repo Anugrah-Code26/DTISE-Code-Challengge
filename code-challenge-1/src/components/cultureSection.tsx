@@ -1,5 +1,5 @@
 import React from 'react';
-import BackGround from '../public/images/culture-bg.png';
+import BackGround from '../public/images/culture-bg.webp';
 
 const Culture: React.FC = () => {
   return (
